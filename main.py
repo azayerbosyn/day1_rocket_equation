@@ -16,13 +16,21 @@ def total_fuel():
     total_fuel_mass = 0
     for mass in INPUT_MASS:
         count = count_fuel(mass)
-        if count <= 0:
-            return total_fuel_mass
-        else:
-            total_fuel_mass += count
+        count = part2(count)
+        total_fuel_mass += count
     print(total_fuel_mass)
     return total_fuel_mass
 
 
+def part2(fuel):
+    fuel2 = count_fuel(fuel)
+    sum_fuel = fuel
+    while fuel2 > 0:
+        sum_fuel += fuel2
+        fuel2 = count_fuel(fuel2)
+    return sum_fuel
+
+
 total_fuel()
 # part 1 answer: 3405721
+# part 2 answer: 5105716
